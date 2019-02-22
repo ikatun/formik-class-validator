@@ -52,7 +52,7 @@ export class ProductForm extends React.Component {
 
   render() {
     return (
-      <Formik initialValues={{}} onSubmit={this.handleSubmit} validate={ProductFormModel.createValidator()}>
+      <Formik initialValues={new ProductFormModel()} onSubmit={this.handleSubmit} validate={ProductFormModel.createValidator()}>
         {(formik: FormikProps) => {
           console.log('errors', formik.errors);
           return (
