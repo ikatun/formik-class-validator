@@ -4,7 +4,7 @@ import { ValidationError, ValidationOptions } from 'class-validator';
 import { values, size } from 'lodash';
 
 import { Type, TypeHelpOptions } from 'class-transformer';
-import { ValidateNested as OriginalValidateNested } from 'class-validator';
+import { ValidateNested as OriginalValidateNested, registerDecorator, ValidationArguments } from 'class-validator';
 
 export * from 'class-validator';
 
@@ -44,3 +44,19 @@ export class FormikValidatorBase {
   }
 }
 
+export function ValidateWith(validate: (args: ValidationArguments) => boolean, validationOptions?: ValidationOptions) {
+  return function (object: Object, propertyName: string) {
+    registerDecorator({
+      name: "isLongerThan",
+      target: object.constructor,
+      propertyName: propertyName,
+      constraints: [],
+      options: validationOptions,
+      validator: {
+        validate(value: any, args: ValidationArguments) {
+          return validate(args);
+        }
+      }
+    });
+  };
+}

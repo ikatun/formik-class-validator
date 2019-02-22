@@ -45,3 +45,20 @@ var FormikValidatorBase = /** @class */ (function () {
     return FormikValidatorBase;
 }());
 exports.FormikValidatorBase = FormikValidatorBase;
+function ValidateWith(validate, validationOptions) {
+    return function (object, propertyName) {
+        class_validator_1.registerDecorator({
+            name: "isLongerThan",
+            target: object.constructor,
+            propertyName: propertyName,
+            constraints: [],
+            options: validationOptions,
+            validator: {
+                validate: function (value, args) {
+                    return validate(args);
+                }
+            }
+        });
+    };
+}
+exports.ValidateWith = ValidateWith;
