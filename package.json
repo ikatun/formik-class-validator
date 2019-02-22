@@ -1,0 +1,27 @@
+{
+  "name": "formik-class-validator",
+  "version": "0.0.1",
+  "description": "Integrate class-validator with formik for easier javascript and typescript form validation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Ivo Katunaric",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "@types/lodash": "*",
+    "class-transformer": "*",
+    "class-validator": "*",
+    "lodash": "*",
+    "reflect-metadata": "*",
+    "class-transformer-validator": "^0.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikatun/formik-class-validator"
+  }
+}
