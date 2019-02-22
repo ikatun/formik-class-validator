@@ -47,7 +47,6 @@ export class FormikValidatorBase {
 export function ValidateWith(validate: (args: ValidationArguments) => boolean, validationOptions?: ValidationOptions) {
   return function (object: Object, propertyName: string) {
     registerDecorator({
-      name: "isLongerThan",
       target: object.constructor,
       propertyName: propertyName,
       constraints: [],
